@@ -146,9 +146,35 @@ h3 {
     }
     
 }
-.btn:hover {
-     color: #e03131;
+/*.btn {
+    border: 2px solid #e03131;
+    padding: 15px 45px;
+}*/
+.btn {
+    position: relative;
 }
+.btn::before {
+     content: "";
+    position: absolute;
+    border-top: 2px solid #e03131;
+    border-left: 2px solid #e03131;
+    width: 20px;
+    height: 20px;
+    left: -40px;  
+    top: -20px;
+
+}
+.btn::after {
+    content: "";
+    position: absolute;
+    border-bottom: 2px solid #e03131;
+    border-right: 2px solid #e03131;
+    width: 20px;
+    height: 20px;
+    right: -40px;
+    top: 20px;
+}
+
 
 .location {   
     background-color: #fff;
