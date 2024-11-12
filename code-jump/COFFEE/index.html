@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
+  <header id="header">
     <nav>
       <ul>
         <li><a href="#menu">MENU</a></li>
@@ -17,72 +17,86 @@
         <li><a href="#location">LOCATION</a></li>
       </ul>
     </nav>
-      <h1>
+      <h1 class="site-title">
         <img src="images/logo.svg" alt="">
       </h1>
   </header>
   <main>    
-    <section class="menu">
-      <div class="section_title">
-        <h2>MENU</h2>
+    <section id="menu">
+      <div class="menu-img fixed-bg">
+        <h2 class="sec-title">MENU</h2>
       </div>           
-      <div class="menu_sotogawa">
+      <div class="menu_content wrapper">
         <div class="menu_item">
-          <h3>COFFEE</h3>
+          <h3 class="item-titel">COFFEE</h3>
           <dl>
-            <dt>XXXXXXXX</dt><dd>¥500</dd>
-            <dt>XXXXXXXX</dt><dd>¥500</dd>
-            <dt>XXXXXXXX</dt><dd>¥500</dd>
-            <dt>XXXXXXXX</dt><dd>¥500</dd>
-            <dt>XXXXXXXX</dt><dd>¥500</dd>
-            <dt>XXXXXXXX</dt><dd>¥500</dd>
-            <dt>XXXXXXXX</dt><dd>¥500</dd>
-            <dt>XXXXXXXX</dt><dd>¥500</dd>
-            <dt>XXXXXXXX</dt><dd>¥500</dd>
-            <dt>XXXXXXXX</dt><dd>¥500</dd>
+            <dt>XXXXXXXX</dt><dd>&yen;500</dd>
+            <dt>XXXXXXXX</dt><dd>&yen;500</dd>
+            <dt>XXXXXXXX</dt><dd>&yen;500</dd>
+            <dt>XXXXXXXX</dt><dd>&yen;500</dd>
+            <dt>XXXXXXXX</dt><dd>&yen;500</dd>
+            <dt>XXXXXXXX</dt><dd>&yen;500</dd>
+            <dt>XXXXXXXX</dt><dd>&yen;500</dd>
+            <dt>XXXXXXXX</dt><dd>&yen;500</dd>
+            <dt>XXXXXXXX</dt><dd>&yen;500</dd>
+            <dt>XXXXXXXX</dt><dd>&yen;500</dd>
           </dl>
         </div>
         <div class="menu_item">
-          <h3>FOOD</h3>
-          <dl>
-              <dt>XXXXXXXX</dt><dd>¥500</dd>
-              <dt>XXXXXXXX</dt><dd>¥500</dd>
-              <dt>XXXXXXXX</dt><dd>¥500</dd> 
+          <h3 class="item-titel">FOOD</h3>
+          <dl class="food">
+            <dt>XXXXXXXX</dt><dd>&yen;500</dd>
+            <dt>XXXXXXXX</dt><dd>&yen;500</dd>
+            <dt>XXXXXXXX</dt><dd>&yen;500</dd>
           </dl>
-          <h3>OTHER</h3>
+          <h3 class="item-titel">OTHER</h3>
           <dl>
-              <dt>XXXXXXXX</dt><dd>¥500</dd>
-              <dt>XXXXXXXX</dt><dd>¥500</dd>
-              <dt>XXXXXXXX</dt><dd>¥500</dd> 
+            <dt>XXXXXXXX</dt><dd>&yen;500</dd>
+            <dt>XXXXXXXX</dt><dd>&yen;500</dd>
+            <dt>XXXXXXXX</dt><dd>&yen;500</dd>
           </dl>
         </div>
       </div>
     </section>
-    <section class="about">
-      <div class="section_title">
-        <h2>ABOUT</h2>
+    <section id="about">
+      <div class="about-img fixed-bg">
+        <h2 class="sec-title">ABOUT</h2>
       </div>
-      <h3>COFFEE</h3>
-        <ul>
+      <div class="about-content wrapper">
+        <div class="about-item">
+          <h3 class="item-titel">COFFEE</h3>
+          <ul>
             <li>テキストテキストテキストテキストテキストテキストテキストテキスト テキストテキストテキストテキストテキストテキストテキストテキスト テキストテキストテキストテキストテキストテキストテキストテキスト テキストテキストテキストテキストテキストテキストテキストテキスト</li>
             <li>テキストテキストテキストテキストテキストテキストテキストテキスト テキストテキストテキストテキストテキストテキストテキストテキスト テキストテキストテキストテキストテキストテキストテキストテキスト テキストテキストテキストテキストテキストテキストテキストテキスト</li>
             <li>テキストテキストテキストテキストテキストテキストテキストテキスト テキストテキストテキストテキストテキストテキストテキストテキスト テキストテキストテキストテキストテキストテキストテキストテキスト テキストテキストテキストテキストテキストテキストテキストテキスト</li>
             <li>テキストテキストテキストテキストテキストテキストテキストテキスト テキストテキストテキストテキストテキストテキストテキストテキスト テキストテキストテキストテキストテキストテキストテキストテキスト テキストテキストテキストテキストテキストテキストテキストテキスト</li>
         </ul>
-        <a href="" class="btn">Read More</a>
-    </section>
-    <section class="location">
-      <div class="section_title">
-          <h2>LOCATION</h2>
+        <a class="btn" href="#"><span>Read More</span></a>
+        </div>
       </div>
-      <div class="aaaa">
-          <h3>OUR STORE</h3>
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25936.49942482029!2d139.68716643136054!3d35.65083351884888!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188b3d1c1e1d89%3A0x4726c1590c76850c!2sXXXY%20TOKYO!5e0!3m2!1sja!2sjp!4v1729997466178!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-          <div class="info">
-            <p>X-XX-XX, Ebisuminami, Shibuya-ku, Tokyo 150-0022<br>東京都渋谷区恵比寿南X-XX-XX</p>
-              <p>Open 7 days a Week<br>9:00am to 10:00pm</p>
-              <p>Tel : XX-XXXX-XXXX</p>
+    </section>
+    <section id="location">
+      <div class="location-img fixed-bg">
+          <h2 class="sec-title">LOCATION</h2>
+      </div>
+      <div class="location-content wrapper">
+        <div class="location-item">
+          <h3 class="item-titel">OUR STORE</h3>
+          <div class="item-map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25936.49942482029!2d139.68716643136054!3d35.65083351884888!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188b3d1c1e1d89%3A0x4726c1590c76850c!2sXXXY%20TOKYO!5e0!3m2!1sja!2sjp!4v1729997466178!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
           </div>
+          <div class="item-info">
+            <p>
+              X-XX-XX, Ebisuminami, Shibuya-ku, Tokyo 150-0022<br>
+              東京都渋谷区恵比寿南X-XX-XX
+            </p>
+            <p>
+              Open 7 days a Week<br>
+              9:00am to 10:00pm
+            </p>
+            <p>Tel : XX-XXXX-XXXX</p>
+          </div>
+        </div>
       </div>
     </section>
   </main>    
