@@ -1,0 +1,70 @@
+@charset "UTF-8";
+html {
+  font-size: 100%;
+}
+body {
+  color: #24292e;
+  line-height: 1.7;
+}
+a {
+  text-decoration: none;
+}
+img {
+  max-width: 100%;
+}
+li {
+  list-style: none;
+}
+.p-wrapper {
+  width: 960px;
+  padding: 90px 4%;
+  margin: 0 auto;
+  text-align: center;
+}
+.c-sec__title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 50px;
+}
+
+/*ヘッダー*/
+.l-header {
+  display: flex;
+  justify-content: space-between
+}
+.l-header__ul {
+  display: flex;
+}
+.l-header__logo {
+  font-size: 1.9rem;
+  font-weight: 200;
+}
+.l-header__nav {
+  font-size: 0.9rem;
+  color: #000;
+}
+.l-header__ul li {
+  margin-left: 25px;
+}
+.l-header__liImg {
+  width: 20px;
+}
+
+/*アバウト*/
+.p-about__box {
+  text-align: left;
+  justify-content: space-between;
+}
+.p-about__box p {
+  font-size: 0.8rem;
+  margin-bottom: 30px;
+}
+
+/*ワークス*/
+.p-works__ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+.p-works__ul li {
+  width: 30%;
+}
