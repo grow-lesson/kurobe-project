@@ -14,9 +14,9 @@
     <header id="l-header">
       <nav class="l-header__nav">
         <ul class="l-header__list">
-          <li class="l-header__item"><a href="" class="l-header__link">MENU</a></li>
-          <li class="l-header__item"><a href="" class="l-header__link">ABOUT</a></li>
-          <li class="l-header__item"><a href="" class="l-header__link">LOCATION</a></li>
+          <li class="l-header__item"><a href="#menu" class="l-header__link">MENU</a></li>
+          <li class="l-header__item"><a href="#about" class="l-header__link">ABOUT</a></li>
+          <li class="l-header__item"><a href="#location" class="l-header__link">LOCATION</a></li>
         </ul>
       </nav>
       <h1 class="l-header__logo">
@@ -26,14 +26,14 @@
     <!--メイン-->
     <!--メニュー-->
     <main class="l-main">
-      <section id="p-menu">
-        <div class="p-menu__img p-fixed-bg">
+      <section id="menu" class="p-menu">
+        <div class="p-menu__img c-titleArea">
           <h2 class="c-sec__title">MENU</h2>
         </div>
-        <div class="p-menu__box p-wrapper">
+        <div class="p-menu__box c-sectionArea">
           <div class="p-menu__item">
             <h3 class="c-itemTitle">COFFEE</h3>
-            <dl class="p-menu__dl">
+            <dl class="p-menu__list">
               <dt>XXXXXXXX</dt>
               <dd>&yen;500</dd>
               <dt>XXXXXXXX</dt>
@@ -58,7 +58,7 @@
           </div>
           <div class="p-menu__item">
             <h3 class="c-itemTitle">FOOD</h3>
-            <dl class="p-menu__dl food">
+            <dl class="p-menu__list food">
               <dt>XXXXXXXX</dt>
               <dd>&yen;500</dd>
               <dt>XXXXXXXX</dt>
@@ -67,7 +67,7 @@
               <dd>&yen;500</dd>
             </dl>
             <h3 class="c-itemTitle">OTHER</h3>
-            <dl class="p-menu__dl">
+            <dl class="p-menu__list">
               <dt>XXXXXXXX</dt>
               <dd>&yen;500</dd>
               <dt>XXXXXXXX</dt>
@@ -79,11 +79,11 @@
         </div>
       </section>
       <!--アバウト-->
-      <section id="p-about">
-        <div class="p-about__img p-fixed-bg">
+      <section id="about" class="p-about">
+        <div class="p-about__img c-titleArea">
           <h2 class="c-sec__title">ABOUT</h2>
         </div>
-        <div class="p-about__box p-wrapper">
+        <div class="p-about__box c-sectionArea">
           <h3 class="c-itemTitle">COFFEE</h3>
             <ul class="p-about__ul">
               <li class="p-about__li">
@@ -119,11 +119,11 @@
         </div>
       </section>
       <!--ロケーション-->
-      <section id="p-location">
-        <div class="p-location__img p-fixed-bg">
+      <section id="location" class="p-location">
+        <div class="p-location__img c-titleArea">
           <h2 class="c-sec__title">LOCATION</h2>
         </div>
-        <div class="p-location__box p-wrapper">
+        <div class="p-location__box c-sectionArea">
           <h3 class="c-itemTitle">OUR STORE</h3>
         
           <div class="p-location__map">
@@ -148,6 +148,6 @@
       </section>
     </main>
     <!--フッター-->
-    <footer id="l-footer">&copy; COFFEE</footer>
+    <footer id="footer" class="l-footer">&copy; COFFEE</footer>
 </body>
 </html>
