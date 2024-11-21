@@ -26,38 +26,81 @@ a {
   padding: 0 40px;
 }
 
+.c-main__title {
+  font-size: 0.9rem;
+  margin-bottom: 30px;
+}
+
 /*ヘッダー*/
 .l-header {
+  width: 100%;
+  height: 80px;
+  background-color: #fff;
   display: flex;
+  align-items: center;
   justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 .l-header__logo {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
+  font-weight: bold;
 }
-.p-main__btn {
-
+.c-header__nav {
+  position: fixed;
+  top: 0;
+  left: -300px;
+  width: 300px;
 }
+/*ハンバーガーメニュー*/
+.c-header__hamburgerMenu {
+  width: 30px;
+  height: 30px;
+}
+.c-header__hamburgerMenuSpan {
+  display: block;
+  width: 30px;
+  height: 2px;
+}
+.c-header__hamburgerMenuSpanUe {
+  top: 10px;
+}
+.c-header__hamburgerMenuSpanShita {
+  bottom: 10px;
+  }
 
 /*メイン*/
 .l-main {
-  margin-bottom: 60px;
+  margin-top: 80px;
+  margin-bottom: 120px;
 }
 .i-main__itemBox {
   display: grid;
-  grid-template-columns: 25% 25% 25% 25%;
-  grid-template-rows: 1fr 1fr;
-  gap: 40px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 35px;
 }
-.p-main__btn {
+.p-main__productsbtn {
   margin-top: 40px;
   display: block;
   text-align: center;
+}
+.c-main__itemImg {
+  margin-bottom: 10px;
+}
+.c-main__itemP {
+  margin-bottom: 5px;
+}
+.p-main__btn {
+  font-size: 0.9rem;
 }
 
 /*フッター*/
 .l-footer {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 20px;
 }
 .l-footer__navList {
   display: flex;
@@ -68,5 +111,59 @@ a {
 }
 .l-footer__copy {
   font-size: 0.6rem;
+}
+/*プロダクトページ1*/
+.c-productArea {
+  margin-top: 100px;
+}
+.c-main__pageNoBox {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  font-size: 0.9rem;
+}
+.c-main__pageNo {
+  margin-right: 30px;
+}
+
+/*アイテムページ*/
+.l-main__itemBox {
+  display: flex;
+  justify-content: space-between;
+}
+.l-main__item {
+  width: 48%;
+}
+.c-itemPageArea {
+  width: 100%;
+  max-width: 800px;
+  margin: 120px auto 160px;
+  padding: 0 40px;
+}
+.l-main__content {
+  font-size: 1rem;
+  margin-bottom: 40px;
+}
+
+
+
+/*レスポンシブ*/
+@media screen and (max-width: 900px){
+  /*メイン*/
+  .i-main__itemBox {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px 20px;
+  }
+  .c-main__item {
+    margin-bottom: 10px;
+  }
+
+  /*フッター*/
+  .l-footer {
+    flex-direction: column;
+  }
+  .l-footer__nav {
+    margin-bottom: 10px;
+  }
 }
 
