@@ -4,6 +4,9 @@ html {
 }
 body {
   color: #333;
+  font-size: 0.875rem;
+  min-height: 100vh;
+  position: relative;
 }
 img {
   max-width: 100%;
@@ -18,7 +21,6 @@ a {
   color: #333;
   text-decoration: none;
 }
-
 .c-sectionArea {
   width: 100%;
   max-width: 1360px;
@@ -26,13 +28,8 @@ a {
   padding: 0 40px;
 }
 
-.c-main__title {
-  font-size: 0.9rem;
-  margin-bottom: 30px;
-}
-
 /*ヘッダー*/
-.l-header {
+#header {
   width: 100%;
   height: 80px;
   background-color: #fff;
@@ -40,130 +37,95 @@ a {
   align-items: center;
   justify-content: space-between;
   position: fixed;
-  top: 0;
   left: 0;
   right: 0;
-}
-.l-header__logo {
-  font-size: 1.3rem;
-  font-weight: bold;
-}
-.c-header__nav {
+  z-index: 10;
+} 
+/*ハンバーガーメニュー*/
+.l-header__nav {
   position: fixed;
   top: 0;
   left: -300px;
   width: 300px;
+  color: #fff;
+  padding: 36px 50px;
+  transition: all 0.5s;
+  z-index: 20;
+  opacity: 0;/*完全透明*/
 }
-/*ハンバーガーメニュー*/
-.c-header__hamburgerMenu {
+/*閉じてる*/
+.l-header__hamburgerMenu {
   width: 30px;
   height: 30px;
+  position: relative;
+  transition: all 0.5s;
+  cursor: pointer;
+  z-index: 20;
 }
-.c-header__hamburgerMenuSpan {
+.l-header__hamburgerMenuSpan {
   display: block;
+  position: absolute;
   width: 30px;
   height: 2px;
+  background-color: #333;
+  border-radius: 4px;
+  transition: all 0.5s;
 }
-.c-header__hamburgerMenuSpanUe {
+/*上の線*/
+.l-header__hamburgerMenuSpan:nth-child(1) {
   top: 10px;
 }
-.c-header__hamburgerMenuSpanShita {
+/*下の線*/
+.l-header__hamburgerMenuSpan:nth-child(2) {
   bottom: 10px;
-  }
-
-/*メイン*/
-.l-main {
-  margin-top: 80px;
-  margin-bottom: 120px;
 }
-.i-main__itemBox {
+.mask {
+  display: none;
+  transition: all 0.5s;
+}
+/*メイン*/
+#l-main {
+  padding: 80px 0 160px 0;
+}
+.p-shop__itemBox {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 35px;
 }
-.p-main__productsbtn {
-  margin-top: 40px;
-  display: block;
-  text-align: center;
-}
-.c-main__itemImg {
+.p-shop__img {
   margin-bottom: 10px;
 }
-.c-main__itemP {
+.p-shop__item {
+  font-size: 0.75rem;
   margin-bottom: 5px;
 }
-.p-main__btn {
-  font-size: 0.9rem;
+.c-shop__btn {
+  display: block;
+  text-align: center;
+  margin-top: 40px;
 }
 
 /*フッター*/
 .l-footer {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+}
+.l-footer__nav {
+  
 }
 .l-footer__navList {
+  
   display: flex;
-  font-size: 0.8rem;
 }
 .l-footer__navItem {
-  margin-right: 30px;
+  width: 100px;
+  font-size: 0.75rem;
+  padding-right: 30px;
 }
 .l-footer__copy {
-  font-size: 0.6rem;
+  font-size: 0.625rem;
 }
-/*プロダクトページ1*/
-.c-productArea {
-  margin-top: 100px;
-}
-.c-main__pageNoBox {
-  margin-top: 30px;
-  display: flex;
-  justify-content: center;
-  font-size: 0.9rem;
-}
-.c-main__pageNo {
-  margin-right: 30px;
-}
-
-/*アイテムページ*/
-.l-main__itemBox {
-  display: flex;
-  justify-content: space-between;
-}
-.l-main__item {
-  width: 48%;
-}
-.c-itemPageArea {
-  width: 100%;
-  max-width: 800px;
-  margin: 120px auto 160px;
-  padding: 0 40px;
-}
-.l-main__content {
-  font-size: 1rem;
-  margin-bottom: 40px;
-}
-
-
-
-/*レスポンシブ*/
-@media screen and (max-width: 900px){
-  /*メイン*/
-  .i-main__itemBox {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 40px 20px;
-  }
-  .c-main__item {
-    margin-bottom: 10px;
-  }
-
-  /*フッター*/
-  .l-footer {
-    flex-direction: column;
-  }
-  .l-footer__nav {
-    margin-bottom: 10px;
-  }
-}
-
