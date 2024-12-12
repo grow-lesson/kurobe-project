@@ -21,7 +21,7 @@ a {
   color: #333;
   text-decoration: none;
 }
-.c-sectionArea {
+.l-sectionArea {
   width: 100%;
   max-width: 1360px;
   margin: 0 auto;
@@ -29,7 +29,7 @@ a {
 }
 
 /*ヘッダー*/
-#header {
+#l-header {
   width: 100%;
   height: 80px;
   background-color: #fff;
@@ -41,6 +41,9 @@ a {
   right: 0;
   z-index: 10;
 } 
+.l-header__logo {
+  width: 180px;
+}
 /*ハンバーガーメニュー*/
 .l-header__nav {
   position: fixed;
@@ -84,7 +87,7 @@ a {
   transition: all 0.5s;
 }
 /*メイン*/
-#l-main {
+#main {
   padding: 80px 0 160px 0;
 }
 .p-shop__itemBox {
@@ -114,9 +117,6 @@ a {
   left: 0;
   right: 0;
 }
-.l-footer__nav {
-  
-}
 .l-footer__navList {
   
   display: flex;
@@ -128,4 +128,47 @@ a {
 }
 .l-footer__copy {
   font-size: 0.625rem;
+}
+
+/*プロダクトページの共通*/
+.l-main {
+  padding-top: 120px;
+  padding-bottom: 160px;
+}
+.p-shop__productsBox {
+  margin-bottom: 30px;
+}
+
+
+/*プロダクトページ1*/
+.p-shop__title {
+  margin-bottom: 30px;
+}
+.c-main__pageNoBox {
+  display: flex;
+  justify-content: center;
+}
+.c-main__pageNo {
+  padding-left: 40px;
+}
+
+/*アイテムページ*/
+.p-item__itemBox {
+  max-width: 800px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 60px;
+}
+.p-shop__item {
+  width: 48%;
+  font-size: 0.875rem;
+}
+.p-shop__content {
+  margin-bottom: 30px;
+  font-size: 0.875rem;
+  text-align: justify;
+}
+.p-shop__contentList {
+  display: flex;
+  flex-wrap: wrap;
 }
