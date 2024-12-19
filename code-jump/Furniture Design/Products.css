@@ -87,13 +87,26 @@ a {
   transition: all 0.5s;
 }
 /*メイン*/
+/*プロダクトページのメイン縦幅*/
 #main {
-  padding: 80px 0 160px 0;
+  padding-top: 120px;
+  padding-bottom: 160px;
 }
+
+/*ｈ2タイトル*/
+.p-shop__title {
+  margin-bottom: 30px;
+}
+
+/*ｸﾞﾘｯﾄﾞ*/
 .p-shop__itemBox {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 35px;
+  margin-bottom: 30px;
+}
+.p-shop__img {
+  margin-bottom: 10px;
 }
 .p-shop__img {
   margin-bottom: 10px;
@@ -102,12 +115,14 @@ a {
   font-size: 0.75rem;
   margin-bottom: 5px;
 }
-.c-btn {
-  display: block;
-  text-align: center;
-  margin-top: 40px;
+/*ページ番号*/
+.c-pageNoBox {
+  display: flex;
+  justify-content: center;
 }
-
+.c-pageNo {
+  padding-left: 40px;
+}
 /*フッター*/
 .l-footer {
   display: flex;
@@ -128,38 +143,4 @@ a {
 }
 .l-footer__copy {
   font-size: 0.625rem;
-}
-
-
-
-
-/*プロダクトページ1*/
-
-.c-pageNoBox {
-  display: flex;
-  justify-content: center;
-}
-.c-main__pageNo {
-  padding-left: 40px;
-}
-
-/*アイテムページ*/
-.p-shop__itemBox {
-  max-width: 800px;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 60px;
-}
-.p-shop__item {
-  width: 48%;
-  font-size: 0.875rem;
-}
-.p-shop__content {
-  margin-bottom: 30px;
-  font-size: 0.875rem;
-  text-align: justify;
-}
-.p-shop__contentList {
-  display: flex;
-  flex-wrap: wrap;
 }

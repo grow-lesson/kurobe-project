@@ -27,7 +27,6 @@ a {
   margin: 0 auto;
   padding: 0 40px;
 }
-
 /*ヘッダー*/
 #l-header {
   width: 100%;
@@ -87,26 +86,56 @@ a {
   transition: all 0.5s;
 }
 /*メイン*/
+/*アイテムセクションの縦*/
 #main {
-  padding: 80px 0 160px 0;
+  padding-top: 120px;
+  padding-bottom: 160px;
 }
+
+.l-itemArea {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+/*ｈ2タイトル*/
+.p-shop__title {
+  margin-bottom: 30px;
+}
+/*横幅800px*/
 .p-shop__itemBox {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 35px;
-}
-.p-shop__img {
-  margin-bottom: 10px;
+  max-width: 800px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 60px;
 }
 .p-shop__item {
-  font-size: 0.75rem;
-  margin-bottom: 5px;
+  width: 48%;
 }
+.p-shop__text {
+  font-size: 0.875rem;
+  margin-bottom: 30px;
+}
+.p-shop__contentList {
+  display: flex;
+  flex-wrap: wrap;
+}
+.p-shop__contentList dt{
+  width: 30%;
+}
+.p-shop__contentList dd {
+  width: 70%;
+}
+
+
+/*ボタン*/
 .c-btn {
   display: block;
   text-align: center;
   margin-top: 40px;
 }
+
+
+
 
 /*フッター*/
 .l-footer {
@@ -128,38 +157,4 @@ a {
 }
 .l-footer__copy {
   font-size: 0.625rem;
-}
-
-
-
-
-/*プロダクトページ1*/
-
-.c-pageNoBox {
-  display: flex;
-  justify-content: center;
-}
-.c-main__pageNo {
-  padding-left: 40px;
-}
-
-/*アイテムページ*/
-.p-shop__itemBox {
-  max-width: 800px;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 60px;
-}
-.p-shop__item {
-  width: 48%;
-  font-size: 0.875rem;
-}
-.p-shop__content {
-  margin-bottom: 30px;
-  font-size: 0.875rem;
-  text-align: justify;
-}
-.p-shop__contentList {
-  display: flex;
-  flex-wrap: wrap;
 }
