@@ -143,23 +143,3 @@ a {
   padding-left: 40px;
 }
 
-/*アイテムページ*/
-.p-shop__itemBox {
-  max-width: 800px;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 60px;
-}
-.p-shop__item {
-  width: 48%;
-  font-size: 0.875rem;
-}
-.p-shop__content {
-  margin-bottom: 30px;
-  font-size: 0.875rem;
-  text-align: justify;
-}
-.p-shop__contentList {
-  display: flex;
-  flex-wrap: wrap;
-}

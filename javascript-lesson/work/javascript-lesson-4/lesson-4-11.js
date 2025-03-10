@@ -1,3 +1,8 @@
-for(let i = 5; i > 0; i--) {
-  console.log(i.toString().repeat(6 - i));
+let num = "";
+for(let i = 5; i > 0; i--){
+  num = "";
+  for(let j = 5; j >= i; j--){
+    num = num + i;
+  }
+  console.log(num);
 }
