@@ -9,7 +9,11 @@
   <p id="result-message"></p>
   <script src="script.js"></script>
   <script>
-    // ここに処理を入れましょう。
+    const button = document.getElementById('click-me-button');
+    const resultMassage = document.getElementById('result-message');
+    button.addEventListener('click', () => {
+      resultMassage.textContent = 'ボタンがクリックされました！';
+    });
   </script>
 </body>
 </html>

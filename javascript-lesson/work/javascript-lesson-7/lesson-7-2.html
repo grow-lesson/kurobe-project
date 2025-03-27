@@ -16,7 +16,11 @@
   <button id="changeColor">Change Color</button>
   <div id="box"></div>
   <script>
-    // ここに処理を入れましょう。
+    const button = document.getElementById('changeColor');
+    const box = document.getElementById('box');
+    button.addEventListener('click',() => {
+      box.style.backgroundColor = 'pink';
+    })
   </script>
 </body>
 </html>

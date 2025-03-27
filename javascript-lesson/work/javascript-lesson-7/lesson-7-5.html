@@ -10,7 +10,10 @@
   </div>
   <script src="script.js"></script>
   <script>
-    // ここに処理を入れましょう。
+    const content = document.getElementById('content-container');
+    const newElement = document.createElement('p');
+    newElement.textContent = '新しい段落です！';
+    content.appendChild(newElement);
   </script>
 </body>
 </html>

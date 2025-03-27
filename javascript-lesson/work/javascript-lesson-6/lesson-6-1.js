@@ -1,5 +1,5 @@
 function isEven0r0dd(number){
-  if(number%2 == 0){
+  if(number%2 === 0){
     return "偶数";
   }else{
     return "奇数"

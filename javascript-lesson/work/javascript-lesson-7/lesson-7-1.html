@@ -5,12 +5,11 @@
   <title>DOM操作問題</title>
 </head>
 <body>
-  <div id="content-container">
-    <!-- ここに新しい<p>要素を追加されるようにして下さい。 -->
-  </div>
+  <h1 id="main-heading">こんにちは、DOM!</h1>
   <script src="script.js"></script>
   <script>
-    // ここに処理を入れましょう。
+    const title = document.getElementById('main-heading');
+    title.textContent = 'Hello, DOM!';
   </script>
 </body>
 </html>

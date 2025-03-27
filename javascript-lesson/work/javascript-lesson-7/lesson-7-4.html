@@ -8,7 +8,10 @@
   <input type="text" id="text-input" placeholder="ここに入力">
   <script src="script.js"></script>
   <script>
-    // ここに処理を入れましょう。
+    const text = document.getElementById('text-input');
+    text.addEventListener('input', () => {
+      console.log(text.value);
+    })
   </script>
 </body>
 </html>
