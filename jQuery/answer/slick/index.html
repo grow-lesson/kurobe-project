@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>モーダルウィンドウ問題</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>モーダルウィンドウ問題</h1>
+    <button id="open-modal">モーダルを開く</button>
+
+    <!-- モーダルウィンドウ -->
+    <div class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>モーダルタイトル</h2>
+        <p>これはモーダルウィンドウの内容です。</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="js/jquery.js"></script>
+  <script>
+    $(document).ready(function() {
+      $(".container").modalWindow();
+    });
+  </script>
+</body>
+</html>

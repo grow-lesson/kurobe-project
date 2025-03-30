@@ -1,0 +1,36 @@
+/* オセロ盤 */
+.board {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+table {
+    border-collapse: collapse;
+    border: 2px solid #333;
+}
+
+td {
+    width: 50px;
+    height: 50px;
+    background-color: #006400;
+    border: 1px solid #333;
+    position: relative;
+    cursor: pointer;
+}
+
+/* コマのスタイル */
+.piece {
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+    margin: 5%;
+}
+
+.piece.white {
+    background-color: #ffffff;
+}
+
+.piece.black {
+    background-color: #000000;
+}

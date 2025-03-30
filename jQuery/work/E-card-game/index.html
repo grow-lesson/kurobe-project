@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eカードギャンブル</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="game-container">
+    <h1 class="title">Eカードギャンブル</h1>
+    <div class="separator"></div>
+
+    <!-- CPUのタイトルとカード表示 -->
+    <div class="cpu-cards">
+      <h2 class="cpu-title">CPU（王様側）</h2>
+      <div id="cpu-card-display" class="card-grid">
+          <!-- CPUの選択カードがここに表示される -->
+      </div>
+    </div>
+    <div id="cpu-thinking">CPU考え中...</div>
+    <div class="result"></div>
+    <div class="final-result"></div>
+    <div class="player-cards">
+      <h2 class="player-title">あなた（奴隷側）</h2>
+      <div class="card-grid">
+        <div class="card" data-card="slave"><img src="img/slave.jpg" alt="奴隷カード"></div>
+        <div class="card" data-card="citizen"><img src="img/citizen.jpg" alt="市民カード"></div>
+        <div class="card" data-card="citizen"><img src="img/citizen.jpg" alt="市民カード"></div>
+        <div class="card" data-card="citizen"><img src="img/citizen.jpg" alt="市民カード"></div>
+        <div class="card" data-card="citizen"><img src="img/citizen.jpg" alt="市民カード"></div>
+      </div>
+    </div>
+    <button id="start-game">勝負する</button>
+    <button id="reset-game" style="display: none;">リセット</button>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript">
+    $(function(){
+
+    });
+  </script>
+</body>
+</html>

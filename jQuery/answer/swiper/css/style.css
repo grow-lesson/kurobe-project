@@ -1,0 +1,67 @@
+/* スマートフォンの横画面スタイル */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f2f2f2;
+}
+
+/* スマートフォン風のフレーム */
+.phone-frame {
+    position: relative;
+    width: 360px;
+    height: 580px;
+    background-color: #333;
+    border-radius: 40px;
+    padding: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* スマートフォンの画面部分 */
+.swipe-photo {
+    position: relative;
+    width: 320px;
+    height: 440px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+/* スワイプコンテナの設定 */
+.swipe-photo-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    transition: transform 0.3s ease; /* スワイプ感を出すためのトランジション */
+}
+
+/* 各写真のスタイル */
+.swipe-photo-item {
+    width: 320px;
+    height: 440px;
+}
+
+.swipe-photo-thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ホームボタン風のデザイン */
+.phone-home-button {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    background-color: #666;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}

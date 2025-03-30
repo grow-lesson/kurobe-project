@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>ポケモン図鑑検索</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>ポケモン図鑑</h1>
+    <div class="search">
+      <input type="text" id="js-search-name" class="search__input" placeholder="ポケモンの名前を入力">
+      <button id="js-search-button" class="search__button">検索</button>
+    </div>
+    <div id="pokemon-info" class="pokemon-card"></div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="js/jquery.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('#js-search-button').click(function() {
+        const pokemonName = $('#js-search-name').val();
+        $('#pokemon-info').pokemonSearch({ name: pokemonName });
+      });
+    });
+  </script>
+</body>
+</html>

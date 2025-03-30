@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery 基礎問題集1</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <h1 class="title">jQuery 基礎問題1</h1>
+  <div class="tasks-container">
+    <div class="task-button" id="task1">Task 1: テキストと色の切り替え</div>
+    <div class="task-button" id="task2">Task 2: 背景色のトグル</div>
+    <div class="task-button" id="task3">Task 3: スライドアニメーション</div>
+    <div class="task-button" id="task4">Task 4: 文字のランダム出力</div>
+    <ul class="task-list" id="task5">
+      <li>List Item 1</li>
+      <li>List Item 2</li>
+      <li>List Item 3</li>
+    </ul>
+    <div class="task-button" id="task6">Task 6: 追加と削除のアニメーション</div>
+    <div class="task-button" id="task7" data-text="追加データ属性">Task 7: データ属性表示</div>
+    <div class="task-button" id="task8">Task 8: 時間差の表示</div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="js/jquery.js"></script>
+  <script>
+    $(document).ready(function() {
+      $(".tasks-container").intermediateTasks();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery 基礎問題集</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <h1 class="header">jQuery 基礎問題2</h1>
+  <div class="task-container">
+    <div class="task-btn" id="q1">Q1 - 条件付きメッセージ</div>
+    <div class="task-btn" id="q2">Q2 - 奇数文字列の生成</div>
+    <div class="task-btn" id="q3">Q3 - 数字逆順の挿入</div>
+    <div class="task-btn" id="q4">Q4 - 配列を逆順で表示</div>
+    <div class="task-btn" id="q5">Q5 - 名前と年齢表示</div>
+    <div class="task-btn" id="q6">Q6 - 動的クラス付け</div>
+    <div class="task-btn" id="q7">Q7 - ページ情報と時間表示</div>
+    <div class="task-btn" id="q8">Q8 - 遅延メッセージ</div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="js/jquery.js"></script>
+  <script>
+    $(document).ready(function() {
+      $(".task-container").intermediateTasks();
+    });
+  </script>
+</body>
+</html>
