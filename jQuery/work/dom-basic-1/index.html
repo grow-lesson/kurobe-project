@@ -33,9 +33,9 @@
       $('#task1').click(function(){
         // ①クリックして背景色がピンク、テキストが変わる
         if(!$('#task1').hasClass('clicked')){
-          $('#task1').css('background-color','rgb(232, 62, 140)');
-          $('#task1').text('切り替えました！');
-          $('#task1').addClass('clicked');
+          $('#task1').css('background-color','rgb(232, 62, 140)')
+                    .text('切り替えました！')
+                    .addClass('clicked');
         }
         
       
@@ -61,10 +61,10 @@
       });
       // Task 3: スライドアップとスライドダウンで要素が動き、再度表示される。
       $('#task3').click(function(){
-        $('#task3').slideUp();
-        $('#task3').slideDown();
+        $('#task3').slideUp(500).slideDown(500);
       });
       // Task 4: ランダムな英文字列を生成し、ボタン内に表示。
+      //Math.random().toString(36).substring(2, 8);
       function randomText() {
         const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
         let result = "";
@@ -79,36 +79,30 @@
 
       
       // Task 5: リストアイテムの位置をクリックするとアラートで表示。
-      $('li').click(function(){
-        var index = $('li').index($(this));
-        if (index == 0) {
-          alert("リストアイテムの位置: 1");
-        }else if (index == 1) {
-          alert("リストアイテムの位置: 2");
-        }else {
-          alert("リストアイテムの位置: 3");
-        }
+      $('#task5').find('li').click(function(){
+
+        const index = $('li').index($(this));
+        alert("リストアイテムの位置: " + (index + 1));
       });
       // Task 6: クリックで新しい要素が追加され、再度クリックで削除するアニメーション。
       $('#task6').click(function() {
         if (!$('#task6').hasClass('clicked')) {
           // 新しい要素を追加
           $(this).after('<div class="task6-2">新しい要素が追加されました</div>');
-          $('.task6-2').hide();
-          $('.task6-2').fadeIn('slow');
-          $('#task6').addClass('clicked');
+          $('.task6-2').hide().fadeIn('slow');
+          $(this).addClass('clicked');
         } else {
           // 新しい要素を削除
           $('.task6-2').fadeOut('slow', function() {
-            $('.task6-2').remove();
+            $(this).remove();
           });
           
-          $('#task6').removeClass('clicked');
+          $(this).removeClass('clicked');
         }
       });
       // Task 7: ボタンのデータ属性を取得し、コンソールとアラートで表示。
       $('#task7').click(function() {
-        var dataText = $('#task7').data('text');
+        const dataText = $('this').data('text');
         alert("データ属性の内容: " + dataText);
       })
       // Task 8: クリック後5秒の遅延でメッセージをアラート表示。
