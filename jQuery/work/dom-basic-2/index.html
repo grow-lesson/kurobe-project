@@ -25,13 +25,70 @@
   <script type="text/javascript">
     $(function(){
       // Q1: 年齢を入力し、20歳以上であれば成人と判定。ただし、年齢が偶数か奇数かでメッセージ内容を変更。
+      $('#q1').click(function() {
+        let age = prompt('年齢を入力してください :');
+        if (age >= 20) {
+          if (age % 2  === 0) {
+            alert('あなたは成人です。(偶数の年齢)');
+          }else{
+            alert('あなたは成人です。(奇数の年齢)');
+          }
+        } else {
+          alert('あなたは未成年です。');
+        }
+      });
       // Q2: 1から9までの奇数を文字列として生成し、画面に表示。
+      $('#q2').click(function() {
+        function oddNum(){
+          let result = '';
+          for(let i = 1; i <= 9; i++) {
+          if (i % 2 !== 0) {
+            result += i;
+          }
+        }
+        return result;
+      }
+      $(this).after('<p>' + oddNum() + '</p>');
+      });
       // Q3: 9から0までの数字を逆順に並べた文字列を生成し、画面に表示。
+      $('#q3').click(function() {
+        function reverse(){
+          let result = '';
+          for(let i = 9; i >= 0; i--) {
+            result += i; 
+        }
+        return result;
+      }
+      $(this).after('<p>' + reverse() + '</p>');
+      });
       // Q4: 1から10までの配列を作成し、逆順にしてコンソールに出力。
+      $('#q4').click(function() {
+        let num = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        console.log(num.reverse());
+      });
       // Q5: 名前と年齢を入力し、コンソールに「名前と年齢」のメッセージを大文字で表示。
+      $('#q5').click(function() {
+        let name = prompt('名前を入力してください :');
+        let age = prompt('年齢を入力してください :');
+        console.log('HELLO, ' + name.toUpperCase() + '!' + ' YOU ARE ' + age + ' YEARS OLD.');
+      });
       // Q6: ボタンをクリックすると、新しい要素を動的に作成し、色や形状も変更して表示。
+      $('#q6').click(function() {
+        $(this).after('<div style="background-color: rgb(255, 180, 0); color: rgb(51, 51, 51); padding:10px; margin-top:10px; border-radius:5px; text-align: center;">新しい要素が追加されました</div>');
+      });
       // Q7: ページのURLと現在時刻をコンソールに表示。
+      $('#q7').click(function() {
+        const pageUrl = location.href;
+        console.log('現在のページURL:\n' + pageUrl);
+        const now = new Date();
+        console.log('現在の時刻: ' + now.toLocaleString());
+      });
       // Q8: ボタンをクリックして2秒後にアラートでメッセージを表示。
+      $('#q8').click(function() {
+        setTimeout(function() {
+          alert('このメッセージは２秒後に表示されました。');
+        }, 2000);
+      });
     });
   </script>
 </body>
