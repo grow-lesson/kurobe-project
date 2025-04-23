@@ -26,7 +26,50 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script type="text/javascript">
     $(function(){
+      //パンダまで移動したら1に戻る
+      let timer = setInterval(slideTimer, 3000); 
 
+      const slideCount = $('.slider-list li').length;
+      const slideWidth = $('.slider-list li').outerWidth();
+      let currentIndex = 0;
+
+      //slideTimer()関数
+      function slideTimer() {
+        currentIndex++;
+        if(currentIndex >= slideCount) {
+          currentIndex = 0;
+          $('.slider-list').animate({'left': 0}, 500);
+        } else {
+          $('.slider-list').animate({'left' : `-=${slideWidth}px`}, 500);
+        }  
+      }
+      //戻るボタン
+      $('.prev').click(function() {
+        clearInterval(timer);
+        if(currentIndex === 0) {
+          currentIndex = slideCount - 1;
+          $('.slider-list').animate({'left': `-${currentIndex * slideWidth}px`}, 500);
+        } else {
+          currentIndex--;
+          $('.slider-list').animate({'left' : `+=${slideWidth}px`}, 500);
+        }
+        restartTimer();  
+      });
+      //すすむボタン
+      $('.next').click(function() {
+        clearInterval(timer);
+        currentIndex++;
+        if(currentIndex >= slideCount) {
+          currentIndex = 0;
+          $('.slider-list').animate({'left': 0}, 500);
+        } else {
+          $('.slider-list').animate({'left' : `-=${slideWidth}px`}, 500);
+        }  
+        restartTimer();
+      });
+      function restartTimer() {
+        timer = setInterval(slideTimer, 3000);
+      }
     });
   </script>
 </body>
