@@ -38,9 +38,100 @@
   </div>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script type="text/javascript">
-    $(function(){
+    $(function() {
+  let cpuDeck = ['king', 'citizen', 'citizen', 'citizen', 'citizen'];
+  const playerDeck = ['slave', 'citizen', 'citizen', 'citizen', 'citizen'];
+  let selectedCard = null;
 
-    });
+  // カード選択
+  $('.card').on('click', function() { //cardクラスの要素がクリックされたときに、以下の処理を行う
+    if ($(this).hasClass('used')) return; //クリックされた要素がusedクラスを持っていたら処理を終了する
+
+    $('.card').removeClass('selected'); //すべての .card 要素から selected クラスを削除する
+    $(this).addClass('selected');       //クリックされた .card 要素に selected クラスを追加する
+    selectedCard = $(this).data('card'); //クリックされた要素の data-card 属性の値を selectedCard という変数に代入する (slaveとか citizenとか)
+  });
+
+  // 勝負処理
+  $('#start-game').on('click', function() {  //勝負するボタンがクリックされたとき、以下の処理を行う
+    if (!selectedCard) {                     //selectedCardではなかったら
+      $('.result').text("カードを選択してください。");         //「カードを選択してください。」と表示
+      return;                                //処理を終了する
+    }
+
+    // CPU思考表示
+    $('#cpu-thinking').css('visibility', 'visible');  //CPU考え中...を表示する
+    $('.result').text('');                            //.resultを空にする(表示リセット)
+    $('.final-result').text('');                      //.final-resultを空欄にする(表示リセット)
+
+    setTimeout(() => {                                                     //1秒後に処理を実行する
+      $('#cpu-card-display').empty();                                      //#cpu-card-displayの中身をを削除する
+
+      const randomIndex = Math.floor(Math.random() * cpuDeck.length);  
+      const cpuCard = cpuDeck[randomIndex];                                // ランダムにカードを1枚選ぶ
+      cpuDeck.splice(randomIndex, 1);                                      // そのカードをcpuDeckから削除する
+
+
+      // CPUカード表示
+      //<img>（画像）タグを jQuery で作成し、その src 属性に img/○○.jpg を設定し、alt 属性にカードの名前（cpuCardの値）を設定する
+      const cpuImg = $('<img>').attr('src', `img/${cpuCard}.jpg`).attr('alt', cpuCard);
+      $('#cpu-card-display').append(cpuImg);                      //id="cpu-card-display" の要素の中に、先ほど作成した cpuCardDiv（カード画像を含んだ<div>）を追加する
+
+      $('#cpu-thinking').css('visibility', 'hidden');   //CPU考え中...を見えなくする
+
+      // 勝敗ロジック
+      const resultText = judgeResult(selectedCard, cpuCard); //勝敗の判定を変数resultTextに入れる
+      $('.result').text(resultText.text);                    //.resultに結果を表示する
+
+      //プレイヤーが負けたらゲームオーバーと表示
+      if (resultText.text.includes('CPUの勝ち')) {
+        $('.final-result').text('ゲームオーバー!');
+      }
+
+      //勝負が付いたらゲーム終了
+      if (resultText.text !== '引き分け！') {
+        $('#start-game').hide();
+        $('#reset-game').show();
+        }
+
+      // 選んだカードを無効化
+      $(`.card.selected`).addClass('used').removeClass('selected'); //選んだカードに使用済みの印をつけて、選択中の印をはずす
+      selectedCard = null;                                          //もうカードは選ばれてないことにする
+
+      // 勝負後カードが残っていなければゲーム終了
+      if (resultText.text === 'あなたの勝ち！' || resultText.text === 'CPUの勝ち！' ) { 
+        $('#start-game').hide();                //「勝負する」ボタンを非表示にする
+        $('#reset-game').show();                //「リセット」ボタンを表示する
+      }
+    }, 1000); // 1秒後にCPUカード表示＆勝負
+  });
+
+  // リセット処理
+  $('#reset-game').on('click', function() {  //リセットボタンをクリックしときの処理
+    $('.card').removeClass('used selected'); //cardクラスからusedとselectedを外す
+    $('#cpu-card-display').empty();          //#cpu-card-displayをからにする
+    $('.result').text('');                   //.resultを空欄にする
+    $('.final-result').text('');             //.final-resultを空欄にする
+    $('#start-game').show();                 //勝負するボタンを表示する
+    $('#reset-game').hide();                 //リセットボタンを非表示にする
+    selectedCard = null;                     //カードは選ばれてないことにする
+    cpuDeck = ['king', 'citizen', 'citizen', 'citizen', 'citizen'];
+  });
+
+  // 勝敗判定関数
+  function judgeResult(player, cpu) {
+    if (player === cpu) return { text: '引き分け！' }; //playerとcpuが同じカードを出したら引き分けと結果を返す
+
+    const rules = {
+      slave: { king: 'あなたの勝ち！ (奴隷)', citizen: 'CPUの勝ち！ (市民)' },
+      king: { citizen: 'あなたの勝ち！', slave: 'CPUの勝ち！' },
+      citizen: { slave: 'あなたの勝ち！', king: 'CPUの勝ち！ (王様)' }
+    };
+
+    return { text: rules[player][cpu] || '引き分け！' };//rules[player][cpu] に「勝ち！」や「負け！」が入っていれば、それを返す。なにもなかったら → '引き分け！' を返す
+  }
+});
+
   </script>
 </body>
 </html>

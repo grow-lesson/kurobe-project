@@ -15,10 +15,100 @@
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script type="text/javascript">
-  $(function(){
+$(function(){
+  const numbers = [1,2,3,4,5,6,7,8];    
+  let cards = numbers.concat(numbers); // 8ペアの16枚 [1,2,3,4,5,6,7,8,1,2,3,4,5,6,7,8];
+  let flippedCards = [];              //めくった２枚のカードを一時的にいれておく
+  let matchedCount = 0;               //そろったカードを数えるための変数
+  let lock = false; // クリックロック用 lock = false：カードめくれる = true：めくれない
 
+  // シャッフル関数
+  function shuffle(array) {                       
+    for(let i = array.length -1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i +1));
+      [array[i], array[j]] = [array[j], array[i]]; //ランダムに選ばれた２枚のカードを入れ替えている
+    }
+  }
+
+  // カード生成
+  function createCards() {
+  shuffle(cards);                          //cardsをシャッフル関数に渡してランダムに並び変える
+  const container = $('.game-container');  //定数 container に、クラス名が game-container のHTML要素を jQuery で選んで入れる
+  container.empty();                       //containerの中身を空にする
+  matchedCount = 0;                        //matchedCountを0にする
+  $('.game-message').hide();               //ゲームクリア！を見えなくする
+
+  for(let i = 0; i < cards.length; i++) {
+    //1枚のカードのHTMLを作る
+    //cards[i]} 1-8の数字
+    //data-num="${cards[i]}" あとでこのカードの数字を調べるためのしるし
+    //<div class="card-front">カードが伏せてあるときは？を表示するめくったときに見える数字
+    //<div class="card-back">?</div>めくったときに見える数字
+    const card = $(`                                
+      <div class="card" data-num="${cards[i]}">
+        <div class="card-inner">
+          <div class="card-front">?</div> 
+          <div class="card-back">${cards[i]}</div>
+        </div>
+      </div>
+    `);
+    container.append(card); //カードをcontainerに入れる→画面に表示する
+  }
+}
+
+  // カードクリック処理
+  $('.game-container').on('click', '.card', function() {
+    if(lock) return; // ロック中は無視
+    if($(this).hasClass('flipped') || $(this).hasClass('matched')) return; //flippedクラスかmatchedクラスが付いていたら終了
+
+    $(this).addClass('flipped'); //flippedクラスが付いてカードがめくれる
+    flippedCards.push($(this));  //今クリックしたカードを配列flippedCardsに追加する
+
+    if(flippedCards.length === 2) {             //めくったカードが2つのとき
+      lock = true;                              //ロックをかけてめくれないようにする
+
+      setTimeout(() => {
+    const num1 = flippedCards[0].data('num');
+    const num2 = flippedCards[1].data('num');
+
+    if(num1 === num2) {
+      // マッチ成功
+      flippedCards[0].addClass('matched').removeClass('flipped');
+      flippedCards[1].addClass('matched').removeClass('flipped');
+
+      // ✔マークに変更
+      flippedCards[0].find('.card-front').text("✔");
+      flippedCards[1].find('.card-front').text("✔");
+
+      matchedCount += 2;
+      flippedCards = [];
+      lock = false;
+
+      if(matchedCount === cards.length) {
+        $('.game-message').show();
+      }
+    } else {
+      // 不一致は元に戻す
+      flippedCards[0].removeClass('flipped');
+      flippedCards[1].removeClass('flipped');
+      flippedCards = [];
+      lock = false;
+    }
+  }, 700); // アニメーションが0.6sなので、ちょっと待つ
+}
+    
   });
-  </script>
+
+  // リセットボタン
+  $('#reset-button').click(() => {               //リセットボタンを押すとカード生成関数を実行する
+    createCards();
+  });
+
+  // 最初にカード生成
+  createCards();
+  
+});
+</script>
 </body>
 </html>
 
