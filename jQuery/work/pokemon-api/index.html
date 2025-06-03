@@ -19,9 +19,65 @@
   </div>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script type="text/javascript">
-    $(function(){
+    $(function() {
+  const typeTranslations = {
+    normal: 'ノーマル', fire: 'ほのお', water: 'みず', grass: 'くさ',
+    electric: 'でんき', ice: 'こおり', fighting: 'かくとう', poison: 'どく',
+    ground: 'じめん', flying: 'ひこう', psychic: 'エスパー', bug: 'むし',
+    rock: 'いわ', ghost: 'ゴースト', dragon: 'ドラゴン', dark: 'あく',
+    steel: 'はがね', fairy: 'フェアリー'
+  };
 
+  $('#js-search-button').on('click', function() {
+    const pokemonName = $('#js-search-name').val().toLowerCase();
+    const apiUrl = `https://pokeapi.co/api/v2/pokemon/${pokemonName}`;
+    const speciesUrl = `https://pokeapi.co/api/v2/pokemon-species/${pokemonName}`;
+
+    $.when($.get(apiUrl), $.get(speciesUrl)).done(function(pokemonRes, speciesRes) {
+      const data = pokemonRes[0];
+      const species = speciesRes[0];
+
+      const japaneseName = species.names.find(n => n.language.name === 'ja').name;
+      const englishName = data.name;
+      const image = data.sprites.front_default;
+      const types = data.types.map(t => typeTranslations[t.type.name] || t.type.name).join('、');
+      const weight = data.weight / 10;  // kg（APIはデシキログラム）
+      const height = data.height / 10;  // m（APIはデシメートル）
+
+      const stats = {};
+      data.stats.forEach(stat => {
+        switch (stat.stat.name) {
+          case 'hp': stats.hp = stat.base_stat; break;
+          case 'attack': stats.attack = stat.base_stat; break;
+          case 'defense': stats.defense = stat.base_stat; break;
+          case 'special-attack': stats.spAttack = stat.base_stat; break;
+          case 'special-defense': stats.spDefense = stat.base_stat; break;
+          case 'speed': stats.speed = stat.base_stat; break;
+        }
+      });
+
+      $('#pokemon-info').html(`
+        <h2>${japaneseName}（${englishName.toUpperCase()}）</h2>
+        <img src="${image}" alt="${japaneseName}">
+        <p><strong>タイプ:</strong> ${types}</p>
+        <p><strong>高さ:</strong> ${height} m</p>
+        <p><strong>重さ:</strong> ${weight} kg</p>
+        <h3>基本ステータス</h3>
+        <ul>
+          <li><strong>HP:</strong> ${stats.hp}</li>
+          <li><strong>こうげき:</strong> ${stats.attack}</li>
+          <li><strong>ぼうぎょ:</strong> ${stats.defense}</li>
+          <li><strong>とくこう:</strong> ${stats.spAttack}</li>
+          <li><strong>とくぼう:</strong> ${stats.spDefense}</li>
+          <li><strong>すばやさ:</strong> ${stats.speed}</li>
+        </ul>
+      `).fadeIn();
+
+    }).fail(function() {
+      $('#pokemon-info').html(`<p>ポケモンが見つかりませんでした。</p>`).fadeIn();
     });
+  });
+});
   </script>
 </body>
 </html>
