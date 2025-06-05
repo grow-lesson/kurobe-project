@@ -12,9 +12,208 @@
   <div class="board"></div>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script type="text/javascript">
-  $(function(){
+  $(function () {
+  const boardSize = 8; // オセロの盤面サイズ（8x8）
+  const $board = $('.board'); // <div class="board"> を見つける
 
-  });
+  // 1. テーブルを作る
+  const $table = $('<table>');
+
+  // 2. 盤面のマスを作る
+  for (let y = 0; y < boardSize; y++) {
+    const $row = $('<tr>');
+    for (let x = 0; x < boardSize; x++) {
+      const $cell = $('<td>')
+        .attr('data-x', x)
+        .attr('data-y', y)
+        .addClass('cell');
+      $row.append($cell);
+    }
+    $table.append($row);
+  }
+
+  // 3. 作ったテーブルを board に追加
+  $board.append($table);
+
+  // 4. 石を置く関数
+  function setPiece(x, y, color) {
+    const $cell = $(`td[data-x=${x}][data-y=${y}]`);
+    $cell.empty(); // 何かあったら消す
+    const $piece = $('<div>')
+      .addClass('piece')
+      .addClass(color); // "black" または "white"
+    $cell.append($piece);
+  }
+
+  // 5. 最初の4つの石を置く
+  const mid = boardSize / 2;
+  setPiece(mid - 1, mid - 1, 'white');
+  setPiece(mid, mid, 'white');
+  setPiece(mid - 1, mid, 'black');
+  setPiece(mid, mid - 1, 'black');
+
+  // 6. クリックで白石を置く（あとでルール追加する）
+  // 方向のリスト（上下左右とナナメ8方向）
+const directions = [
+  [0, -1], [0, 1], // 上下
+  [-1, 0], [1, 0], // 左右
+  [-1, -1], [-1, 1], [1, -1], [1, 1] // ナナメ
+];
+
+// 白石を置ける＆挟めるかを調べる関数
+function checkAndFlip(x, y, color) {
+  const opponent = color === 'white' ? 'black' : 'white';
+  let flipped = false;
+
+  // すでに石がある場所は無効
+  const $targetCell = $(`td[data-x=${x}][data-y=${y}]`);
+  if ($targetCell.find('.piece').length > 0) {
+    return false;
+  }
+
+  // 8方向すべて調べる
+  for (const [dx, dy] of directions) {
+    let nx = x + dx;
+    let ny = y + dy;
+    let toFlip = [];
+
+    while (nx >= 0 && nx < boardSize && ny >= 0 && ny < boardSize) {
+      const $cell = $(`td[data-x=${nx}][data-y=${ny}]`);
+      const $piece = $cell.find('.piece');
+
+      if ($piece.length === 0) break;
+
+      if ($piece.hasClass(opponent)) {
+        toFlip.push($cell);
+      } else if ($piece.hasClass(color)) {
+        // 白で挟んでいたら flip!
+        if (toFlip.length > 0) {
+          flipped = true;
+          for (const $c of toFlip) {
+            $c.find('.piece')
+              .removeClass(opponent)
+              .addClass(color);
+          }
+        }
+        break;
+      } else {
+        break;
+      }
+
+      nx += dx;
+      ny += dy;
+    }
+  }
+
+  if (flipped) {
+    setPiece(x, y, color); // 白石を置く
+  }
+
+  return flipped;
+}
+
+
+let currentTurn = 'white'; // 初期は白
+function autoTurn() {
+  if (currentTurn !== 'black') return;
+
+  const candidates = [];
+
+  for (let y = 0; y < boardSize; y++) {
+    for (let x = 0; x < boardSize; x++) {
+      const $cell = $(`td[data-x=${x}][data-y=${y}]`);
+      if ($cell.find('.piece').length === 0) {
+        // 挟めるか試して、できるなら候補に追加
+        const test = checkAndFlip(x, y, 'black', true);
+        if (test) {
+          candidates.push([x, y]);
+        }
+      }
+    }
+  }
+
+  if (candidates.length === 0) {
+    alert('黒は置ける場所がありません（パス）');
+    currentTurn = 'white';
+    return;
+  }
+
+  // ランダムに1つ選んで置く
+  const [x, y] = candidates[Math.floor(Math.random() * candidates.length)];
+  checkAndFlip(x, y, 'black', false);
+
+  currentTurn = 'white'; // 次は白の番
+}
+
+function checkAndFlip(x, y, color, testOnly = false) {
+  const opponent = color === 'white' ? 'black' : 'white';
+  let flipped = false;
+
+  const $targetCell = $(`td[data-x=${x}][data-y=${y}]`);
+  if ($targetCell.find('.piece').length > 0) {
+    return false;
+  }
+
+  for (const [dx, dy] of directions) {
+    let nx = x + dx;
+    let ny = y + dy;
+    let toFlip = [];
+
+    while (nx >= 0 && nx < boardSize && ny >= 0 && ny < boardSize) {
+      const $cell = $(`td[data-x=${nx}][data-y=${ny}]`);
+      const $piece = $cell.find('.piece');
+
+      if ($piece.length === 0) break;
+
+      if ($piece.hasClass(opponent)) {
+        toFlip.push($cell);
+      } else if ($piece.hasClass(color)) {
+        if (toFlip.length > 0) {
+          flipped = true;
+          if (!testOnly) {
+            for (const $c of toFlip) {
+              $c.find('.piece')
+                .removeClass(opponent)
+                .addClass(color);
+            }
+          }
+        }
+        break;
+      } else {
+        break;
+      }
+
+      nx += dx;
+      ny += dy;
+    }
+  }
+
+  if (flipped && !testOnly) {
+    setPiece(x, y, color);
+  }
+
+  return flipped;
+}
+
+$('.cell').on('click', function () { //おけるかチェックしてる
+  if (currentTurn !== 'white') return;
+
+  const x = $(this).data('x');
+  const y = $(this).data('y');
+
+  const success = checkAndFlip(x, y, 'white');
+  if (!success) {
+    alert('そこには置けません（挟めません）');
+    return;
+  }
+
+  currentTurn = 'black'; // 黒の番へ
+
+  // 少し待ってから黒が自動で打つ
+  setTimeout(autoTurn, 500);
+});
+
+});
   </script>
 </body>
 </html>
